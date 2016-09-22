@@ -11,10 +11,9 @@ import initial from './app.initial';
 
 //routers
 import home from './features/home';
-import page1 from './pages/page1/page1';
-import page2 from './pages/page2/page2';
+import pages from './pages/index';
 
-angular.module('app', [uirouter, routerextras, home, page1, page2])
+angular.module('app', [uirouter, routerextras, home, ...pages])
   .run(initial)
   .config(routing);
 
