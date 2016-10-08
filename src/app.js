@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
-import routerextras from './app.routerextras'
+import routerextras from './common/js/app.routerextras'
 
 
 import routing from './app.config';

@@ -1,6 +1,6 @@
 import uirouter from 'angular-ui-router';
 import routing from './page1.route';
-import voicePlayer from '../../component/voicePlayer/voicePlayer';
+import voicePlayer from '../../components/voicePlayer/voicePlayer';
 
 
 export default angular.module('app.page1', [uirouter,voicePlayer])

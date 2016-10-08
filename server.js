@@ -8,6 +8,7 @@ var app = new (require('express'))()
 var fs = require('fs');
 var util = require('util');
 var path = require('path');
+var upath = require('upath');
 
 var port = 8080;
 
@@ -22,9 +23,10 @@ app.get("/", function (req, res) {
 })
 
 app.use(function (request, response, next) {
-  var list = matchDataSource(__dirname + '/src/mockup/').map((file) => {
-    return file.split(__dirname + '/src/mockup').slice(-1)[0].replace('.js','')
-  })
+  var list = matchDataSource(__dirname + '/mockup/').map((file) => {
+   var replace_target = upath.normalizeSafe(__dirname + '/mockup');
+        return upath.normalizeSafe(file.split(__dirname + '/mockup').slice(-1)[0].replace('.js', '')).replace(replace_target, '')
+  }) 
   console.info('request===>'.yellow + request.url.yellow)
   //console.info(request.path);
   if (list.includes(request.path)) {
@@ -66,7 +68,7 @@ function matchDataSource(dir) {
 }
 
 function readSource(path) {
-  var relativePath = `./src/mockup${path}.js`;
+  var relativePath = `./mockup${path}.js`;
   delete require.cache[require.resolve(relativePath)]
   return require(relativePath)();
 }
