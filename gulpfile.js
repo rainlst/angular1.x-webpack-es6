@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var fs = require('fs');
+var colors = require("colors");
 var path = require('path')
 var rename = require("gulp-rename");
 var webpack = require('webpack-stream');
@@ -49,7 +50,7 @@ gulp.task('updataInfor', ['outputFile'], function () {
         if (err) {
             return console.log(err);
         }
-        console.log("The file was saved!");
+        console.info("updata was applied to project!".green);
     });
 
 
