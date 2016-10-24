@@ -28,23 +28,22 @@ gulp.task('outputFile', ['clean:dist'], function () {
 gulp.task('updataInfor', ['outputFile'], function () {
     var now = new Date;
     var version = now.getTime();
-    function matchDataSource(dir,cdn) {
+    function matchDataSource(dir, cdn) {
         //var path = __dirname + '/src/mockup/'
         return fs.readdirSync(dir).reduce((list, file) => {
             var name = path.join(dir, file);
             var isDir = fs.statSync(name).isDirectory();
-            name=name.replace(dir,cdn);
+            name = name.replace(dir, cdn);
             return list.concat(isDir ? matchDataSource(name) : [name]);
         }, []);
     }
 
-    var fileList = matchDataSource("dist/",cdn);
+    var fileList = matchDataSource("dist/", cdn);
     var updataContent =
         {
             version: version,
-            files: []
+            files: fileList
         }
-    updataContent.files=fileList;
 
     fs.writeFile("dist/updata.json", JSON.stringify(updataContent), function (err) {
         if (err) {
