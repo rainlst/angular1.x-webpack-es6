@@ -8,6 +8,7 @@ export default angular.module("voicePlayer", [])
             template: require('./voicePlayer.html'),
             replace: true,
             link: function (scope, element, attrs) {
+                alert('run component')
                 scope.addEvent = function (bool) {
                     if (bool) {
                         for (var i in scope.voicelist) {
