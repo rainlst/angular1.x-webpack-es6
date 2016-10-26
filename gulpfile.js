@@ -9,7 +9,7 @@ var del = require('del');
 var inject = require('gulp-inject-string');
 
 
-var cdn = 'http://192.168.3.248:8080/';
+var cdn = 'http://192.168.10.40:8080/';
 
 
 gulp.task('clean:dist', function (cb) {

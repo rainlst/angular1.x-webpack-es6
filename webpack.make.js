@@ -19,8 +19,7 @@ module.exports = function makeWebpackConfig(options) {
    */
   var BUILD = !!options.BUILD;
   var TEST = !!options.TEST;
-  // var CDN = options.CDN;
-  var CDN ='';
+  var CDN = options.CDN;
   /**
    * Config
    * Reference: http://webpack.github.io/docs/configuration.html
@@ -38,7 +37,7 @@ module.exports = function makeWebpackConfig(options) {
     config.entry = {}
   } else {
     config.entry = {
-      //common: ['angular', 'fastclick', 'jquery', 'angular-ui-router', './src/app.routerextras.js'],
+      common: ['angular', 'fastclick', 'jquery', 'angular-ui-router', './src/common/js/app.routerextras.js'],
       app: ['./src/app.js']
     }
   }
@@ -66,11 +65,11 @@ module.exports = function makeWebpackConfig(options) {
 
       // Filename for entry points
       // Only adds hash in build mode
-      filename: BUILD ? '[name].js' : '[name].bundle.js',
+      filename: BUILD ? '[name].[hash:8].js' : '[name].[hash:8].bundle.js',
 
       // Filename for non-entry points
       // Only adds hash in build mode
-      chunkFilename: BUILD ? '[name].[hash].js' : '[name].bundle.js'
+      chunkFilename: BUILD ? '[name].[hash:8].js' : '[name].[hash:8].bundle.js'
     }
   }
 
@@ -107,21 +106,21 @@ module.exports = function makeWebpackConfig(options) {
       loader: 'babel?optional=runtime',
       exclude: /node_modules/
     }, {
-        // ASSET LOADER
-        // Reference: https://github.com/webpack/file-loader
-        // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
-        // Rename the file using the asset hash
-        // Pass along the updated reference to your code
-        // You can add here any file extension you want to get copied to your output
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        loader: 'url-loader?limit=8192'
-      }, {
-        // HTML LOADER
-        // Reference: https://github.com/webpack/raw-loader
-        // Allow loading html through js
-        test: /\.html$/,
-        loader: `html-loader?root=.`
-      }]
+      // ASSET LOADER
+      // Reference: https://github.com/webpack/file-loader
+      // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
+      // Rename the file using the asset hash
+      // Pass along the updated reference to your code
+      // You can add here any file extension you want to get copied to your output
+      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+      loader: 'url-loader?limit=8192'
+    }, {
+      // HTML LOADER
+      // Reference: https://github.com/webpack/raw-loader
+      // Allow loading html through js
+      test: /\.html$/,
+      loader: `html-loader?root=.`
+    }]
   };
 
   // ISPARTA LOADER
@@ -153,11 +152,11 @@ module.exports = function makeWebpackConfig(options) {
     // Reference: https://github.com/webpack/style-loader
     // Use style-loader in development for hot-loading
     loader: ExtractTextPlugin.extract('style', 'css!postcss?sourceMap')
-  };
+  }
   var lessLoader = {
     test: /\.less$/,
     //less loader
-    loader: "style!css!postcss!less?strictMath&noIeCompat"
+    loader: "style!css!postcss!less?strictMath"
   }
 
   // Skip loading css in test mode
@@ -168,7 +167,7 @@ module.exports = function makeWebpackConfig(options) {
   }
 
   // Add cssLoader to the loader list
-  config.module.loaders.push(cssLoader);
+  config.module.loaders.push(cssLoader, lessLoader);
 
   /**
    * PostCSS
@@ -176,9 +175,8 @@ module.exports = function makeWebpackConfig(options) {
    * Add vendor prefixes to your css
    */
   config.postcss = [
-    autoprefixer({
-      browsers: ['last 2 version']
-    })
+    precss,
+    autoprefixer
   ];
 
   /**
@@ -193,10 +191,10 @@ module.exports = function makeWebpackConfig(options) {
     new ExtractTextPlugin('[name].css', {
       disable: !BUILD || TEST
     }),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: "common",
-    //   minChunks: Infinity,
-    // }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "common",
+      minChunks: 2,
+    }),
   ];
 
   // Skip rendering index.html in test mode
@@ -249,6 +247,5 @@ module.exports = function makeWebpackConfig(options) {
       inline: true
     }
   };
-
   return config;
 };
