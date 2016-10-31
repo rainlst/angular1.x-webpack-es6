@@ -1,23 +1,11 @@
 import FastClick from 'fastclick'
+
+
 initial.$inject = ['$rootScope', '$state', '$stateParams'];
 export default function initial($rootScope, $state, $stateParams) {
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
-    $rootScope.pageClassValue = {
-        nextPage: 'nextPage',
-        prePage: 'prePage',
-        time: 600
-    }
-    $rootScope.showloading = true
-    $rootScope.cookie = document.cookie;
-    $rootScope.pageClass = {
-        index: $rootScope.pageClassValue.nextPage,
-        list: $rootScope.pageClassValue.nextPage,
-        detail: $rootScope.pageClassValue.nextPage,
-        detailInfo: $rootScope.pageClassValue.nextPage
-    }
-    //触摸延迟解决
-   
+
+    
+   //触摸延迟解决
     FastClick.attach(document.body);
     var statePosition = new Object();
     $rootScope.$on('$stateChangeStart', function (evt, toState, toParams, fromState, fromParams) {

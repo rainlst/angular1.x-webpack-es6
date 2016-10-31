@@ -55,7 +55,7 @@ var server=app.listen(port,ip.address(), function (error) {
   if (error) {
     console.error(error)
   } else {
-    console.info(`==>🌍Listening on http://localhost:${server.address().port}`.green)
+    //console.info(`==>🌍Listening on http://localhost:${server.address().port}`.green)
     console.info(`==>🌍Listening on http://${ip.address()}:${server.address().port}`.green)
   }
 })

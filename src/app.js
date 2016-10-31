@@ -1,8 +1,10 @@
-import 'bootstrap/dist/css/bootstrap.css';
+import './common/css/base.css';
+import './common/css/animate.less';
 
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import routerextras from './common/js/app.routerextras'
+import ngAnimate from 'angular-animate'
 
 
 import routing from './app.config';
@@ -13,7 +15,7 @@ import initial from './app.initial';
 import home from './features/home';
 import pages from './pages/index';
 
-angular.module('app', [uirouter, routerextras, home, ...pages])
+angular.module('app', [uirouter, routerextras,ngAnimate, home, ...pages])
   .run(initial)
   .config(routing);
 
