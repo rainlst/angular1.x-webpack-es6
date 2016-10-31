@@ -8,30 +8,22 @@
 }
 
 
-
-/*.page.ng-enter, .page.ng-leave {
-  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.7s;
-}*/
-
-/*.page.ng-enter, .page.ng-leave {
-  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-}*/
-.page.ng-hide-remove {
-  animation: page-in 0.5s;
+.page.ng-enter {
+  animation: page-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
-.page.ng-hide-add {
-  animation: page-out 0.5s;
+.page.ng-leave{
+  animation: page-out cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
 
 @keyframes page-in
 {
 from {
   opacity: 1;
-  transform:translateX(200px)
+  transform:translateX(100%)
   }
 to {
   opacity: 1;
-  transform:translateX(0px)
+  transform:translateX(0)
   }
 }
 
@@ -39,9 +31,11 @@ to {
 {
 from {
   opacity: 1; 
+  transform:translateX(0)
   }
 to {
-  opacity: 0; 
+  opacity: 1;
+  transform:translateX(-100%) 
   }
 }
 
