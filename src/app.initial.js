@@ -5,13 +5,13 @@ initial.$inject = ['$rootScope', '$state', '$stateParams', '$location', '$window
 export default function initial($rootScope, $state, $stateParams, $location, $window) {
 
     $rootScope.pageClass = {
-        page:''
+        page: ''
     }
 
     //fastclick
     FastClick.attach(document.body);
 
-    //position:ficed suit
+    //position:fixed recovery
     $(function () {
         var $body = $('body');
         var $inputs = $('input');
@@ -29,15 +29,20 @@ export default function initial($rootScope, $state, $stateParams, $location, $wi
     //watch history.back event
     $rootScope.$on('$locationChangeStart', function () {
         // $rootScope.actualLocation = $location.path();
-        if ($rootScope.previousLocation == $location.url()) {
-            //alert("Back Button Pressed");
-            $rootScope.pageClass.page = 'page prePage'
-        } else {
-            $rootScope.pageClass.page = 'page nextPage'
-        }
-        $rootScope.previousLocation = $rootScope.actualLocation;
+
         $rootScope.actualLocation = $location.url();
     });
+    $rootScope.$watch(
+        function () { return $location.path() },
+        function (newLocation, oldLocation) {
+            if ($rootScope.actualLocation == newLocation) {
+                $rootScope.pageClass.page = 'page prePage'
+            }else{
+                $rootScope.pageClass.page = 'page nextPage'
+            }
+        });
+
+
 
 
 
