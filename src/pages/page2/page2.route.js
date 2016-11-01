@@ -6,7 +6,7 @@ export default function routes($stateProvider) {
     .state('page2', {
       // position: true,
       // sticky: true,
-      url: '/page2',
+      url: '/page2?hello',
       views: {
         'page2': {
           template: require('./page2.html'),

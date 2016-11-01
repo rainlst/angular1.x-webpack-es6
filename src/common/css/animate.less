@@ -5,50 +5,70 @@
   width:100%;
   line-height: 20px;
   opacity: 1; 
+  background: transparent;
+  min-height: 100%;
 }
 
 
-.page.ng-enter {
-  animation: page-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+.nextPage.ng-enter {
+  animation: nextPage-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
-.page.ng-leave{
-  animation: page-out cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+.nextPage.ng-leave{
+  animation: nextPage-out cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
 
-@keyframes page-in
+@keyframes nextPage-in
 {
 from {
-  opacity: 1;
+  
   transform:translateX(100%)
   }
 to {
-  opacity: 1;
+
   transform:translateX(0)
   }
 }
 
-@keyframes page-out
+@keyframes nextPage-out
 {
 from {
-  opacity: 1; 
+ 
+  opacity: 0.8
+  }
+to {
+
+  opacity: 0
+  }
+}
+
+.prePage.ng-enter {
+  animation: prePage-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+.prePage.ng-leave{
+  animation: prePage-out cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+@keyframes prePage-in
+{
+from {
+  opacity: 0
+  
+  }
+to {
+ opacity: 0.5
+  }
+}
+
+@keyframes prePage-out
+{
+from {
+  
   transform:translateX(0)
   }
 to {
-  opacity: 1;
-  transform:translateX(-100%) 
+ 
+  transform:translateX(100%) 
   }
 }
-
-/*.page.ng-enter,
-.page.ng-leave.ng-leave-active {
-  opacity:0;
-  transform:translateX(50%);  
-}
-.page.ng-leave,
-.page.ng-enter.ng-enter-active {
-  opacity:1;
-  transform:translateX(0%)
-}*/
-
 
 
