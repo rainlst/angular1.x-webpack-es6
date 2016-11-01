@@ -9,7 +9,6 @@
   min-height: 100%;
 }
 
-
 .nextPage.ng-enter {
   animation: nextPage-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
@@ -32,12 +31,12 @@ to {
 @keyframes nextPage-out
 {
 from {
- 
+   transform:translateX(0);
   opacity: 0.8
   }
 to {
-
-  opacity: 0
+ transform:translateX(-100%);
+  opacity: 0.5
   }
 }
 
@@ -51,11 +50,13 @@ to {
 @keyframes prePage-in
 {
 from {
+   transform:translateX(-100%);
   opacity: 0
   
   }
 to {
- opacity: 0.5
+   transform:translateX(0);
+ opacity: 0.8
   }
 }
 

@@ -1,25 +1,24 @@
 import angular from 'angular';
-export default angular.module("historyBack", [])
-    .directive('historyBack', [function () {
+import historyBack from '../historyBack/historyBack';
+import $ from 'jquery'
+import './tabHeader.less'
+export default angular.module("tabHeader", [historyBack])
+    .directive('tabHeader', [function () {
         return {
             restrict: 'AE',
             scope: { voicelist: '=' },
-            template: require('./historyBack.html'),
+            template: require('./tabHeader.html'),
             transclude: true,
             replace: true,
             link: function (scope, element, attrs) {
+                    var $container = $(element);
+                    var $occupy = $('<div></div>')
+                    $occupy.css("height", $container.outerHeight())
+                    $container.after($occupy);
             },
-            controller:function($scope,$rootScope,$window){
-               
-                 $scope.locationBack=function(){
-                     console.log($window.history)
-                     if( $window.history.length==1){
-                        alert('call mobile function')
-                    
-                     }else{
-                          $window.history.back();
-                     }
-                 }
+            controller: function ($scope, $rootScope, $window) {
+
+
             }
         };
     }])

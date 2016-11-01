@@ -1,5 +1,5 @@
 import FastClick from 'fastclick'
-
+import $ from 'jquery'
 
 initial.$inject = ['$rootScope', '$state', '$stateParams', '$location', '$window'];
 export default function initial($rootScope, $state, $stateParams, $location, $window) {
@@ -9,6 +9,19 @@ export default function initial($rootScope, $state, $stateParams, $location, $wi
     //fastclick
     FastClick.attach(document.body);
 
+    //position:ficed suit
+    $(function () {
+        var $body = $('body');
+        var $inputs = $('input');
+
+        $inputs.on('focus', function (e) {
+            $body.addClass('fixfixed');
+        });
+        $inputs.on('blur', function (e) {
+            $body.removeClass('fixfixed');
+        });
+    });
+
 
 
     //watch history.back event
@@ -16,15 +29,15 @@ export default function initial($rootScope, $state, $stateParams, $location, $wi
         // $rootScope.actualLocation = $location.path();
         if ($rootScope.previousLocation == $location.url()) {
             //alert("Back Button Pressed");
-             $rootScope.pageClass = 'page prePage'
-        }else{
-           
+            $rootScope.pageClass = 'page prePage'
+        } else {
+
             $rootScope.pageClass = 'page nextPage'
         }
         $rootScope.previousLocation = $rootScope.actualLocation;
         $rootScope.actualLocation = $location.url();
     });
-   
+
 
 
 
