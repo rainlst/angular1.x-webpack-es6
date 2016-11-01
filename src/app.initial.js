@@ -4,7 +4,9 @@ import $ from 'jquery'
 initial.$inject = ['$rootScope', '$state', '$stateParams', '$location', '$window'];
 export default function initial($rootScope, $state, $stateParams, $location, $window) {
 
-    $rootScope.pageClass = 'page'
+    $rootScope.pageClass = {
+        page:''
+    }
 
     //fastclick
     FastClick.attach(document.body);
@@ -29,10 +31,9 @@ export default function initial($rootScope, $state, $stateParams, $location, $wi
         // $rootScope.actualLocation = $location.path();
         if ($rootScope.previousLocation == $location.url()) {
             //alert("Back Button Pressed");
-            $rootScope.pageClass = 'page prePage'
+            $rootScope.pageClass.page = 'page prePage'
         } else {
-
-            $rootScope.pageClass = 'page nextPage'
+            $rootScope.pageClass.page = 'page nextPage'
         }
         $rootScope.previousLocation = $rootScope.actualLocation;
         $rootScope.actualLocation = $location.url();

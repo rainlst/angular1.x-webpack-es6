@@ -16,7 +16,7 @@ export default angular.module('app.page1', [uirouter,voicePlayer])
     .controller('test1', ['API',function (API) {
         API.get_data().then((response)=>{
 
-        console.log(response)
+       
 
         })
 
@@ -24,7 +24,7 @@ export default angular.module('app.page1', [uirouter,voicePlayer])
         //obejct.asign demon
         const obj = [{ a: 1 }, { a: 1 }]
         let copy = Object.assign([], obj);
-        console.log(copy)
+      
 
 
 
@@ -32,7 +32,7 @@ export default angular.module('app.page1', [uirouter,voicePlayer])
         let copy1 = copy.map((element) => {
             return { a: element.a + 1 }
         })
-        console.log(copy1)
+      
 
 
 
@@ -42,7 +42,7 @@ export default angular.module('app.page1', [uirouter,voicePlayer])
             //return arr.indexOf(element) === index
         }
         )
-        console.log(copy2)
+     
 
         
 
@@ -50,7 +50,7 @@ export default angular.module('app.page1', [uirouter,voicePlayer])
         let copy3=copy.reduce((pre,element)=>{
             return pre+element.a
         },0)
-        console.log(copy3)
+       
 
 
     }])
