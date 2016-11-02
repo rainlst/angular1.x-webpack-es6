@@ -8,6 +8,7 @@
   min-height: 100%;
 }
 content-item{
+  position: relative;
   overflow: hidden;
   display: block;
 }
@@ -41,10 +42,14 @@ to {
   }
 }
 
-.prePage.ng-hide-remove {
+.prePage.ng-hide-remove,.prePage.ng-hide-add {
+  animation:  0.3s;
+}
+
+.prePage.ng-hide-remove content-item,.prePage.ng-hide-remove .tabheader{
   animation: prePage-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
-.prePage.ng-hide-add{
+.prePage.ng-hide-add content-item,.prePage.ng-hide-add .tabheader{
   animation: prePage-out cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
 

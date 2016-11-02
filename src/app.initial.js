@@ -11,33 +11,20 @@ export default function initial($rootScope, $state, $stateParams, $location, $wi
     //fastclick
     FastClick.attach(document.body);
 
-    //position:fixed recovery
-    $(function () {
-        var $body = $('body');
-        var $inputs = $('input');
-
-        $inputs.on('focus', function (e) {
-            $body.addClass('fixfixed');
-        });
-        $inputs.on('blur', function (e) {
-            $body.removeClass('fixfixed');
-        });
-    });
 
 
 
     //watch history.back event
     $rootScope.$on('$locationChangeStart', function () {
         // $rootScope.actualLocation = $location.path();
-
         $rootScope.actualLocation = $location.url();
     });
     $rootScope.$watch(
-        function () { return $location.path() },
+        function () { return $location.url() },
         function (newLocation, oldLocation) {
             if ($rootScope.actualLocation == newLocation) {
                 $rootScope.pageClass.page = 'page prePage'
-            }else{
+            } else {
                 $rootScope.pageClass.page = 'page nextPage'
             }
         });
@@ -60,9 +47,27 @@ export default function initial($rootScope, $state, $stateParams, $location, $wi
         }
     });
     $rootScope.$on('$stateChangeSuccess', function (evt, toState, toParams, fromState, fromParams) {
+
+        //position:fixed recovery
+        $(function () {
+            var $body = $('body');
+            var $inputs = $('input');
+
+            $inputs.on('focus', function (e) {
+                $body.addClass('fixfixed');
+            });
+            $inputs.on('blur', function (e) {
+                $body.removeClass('fixfixed');
+            });
+        });
+
+
+
         $rootScope.showloading = false;
-        var ToStringParams = JSON.stringify(toParams)
+        var ToStringParams = JSON.stringify(toParams);
         if (toState.position == true) {
+            console.log(statePosition);
+            console.log(statePosition[toState.name + ToStringParams])
             setTimeout(function () {
                 window.scrollTo(0, statePosition[toState.name + ToStringParams])
             }, 0);
