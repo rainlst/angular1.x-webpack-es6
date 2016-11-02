@@ -1,11 +1,8 @@
 ﻿
 /* CSS Document */
 @charset "utf-8";
+html, body {height:100%;overflow:auto;margin: 0;}
 
-
-body{
-	overflow-x: hidden;
-}
 html{
 	background: white;
 }

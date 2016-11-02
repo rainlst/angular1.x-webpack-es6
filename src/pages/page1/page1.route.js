@@ -4,8 +4,8 @@ routes.$inject = ['$stateProvider'];
 export default function routes($stateProvider) {
   $stateProvider
     .state('page1', {
-      // position: true,
-      // sticky: true,
+      position: true,
+      sticky: true,
       url: '/page1',
       views: {
         'page1': {

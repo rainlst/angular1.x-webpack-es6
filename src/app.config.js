@@ -11,7 +11,8 @@ export default function routing($stateProvider, $urlRouterProvider, $sceDelegate
     'http://p.thedoc.cn/**',
     'http://192.168.1.212:8082/**',
     'http://45.124.125.100/**',
-    'http://192.168.0.215:8082/stream/**'
+    'http://192.168.0.215:8082/stream/**',
+    'http://45.124.125.99/**'
   ]);
   $urlRouterProvider.otherwise('/page1');
  

@@ -58,17 +58,13 @@ export default angular.module('app.page1', [uirouter,voicePlayer])
         
         $scope.voicedata=[
                 {
-                    "url": "http://192.168.0.215:8082/stream/6448300e-8249-49af-b948-1ecedeaeaa27.mp3",
+                    "url": "http://45.124.125.99/m10.music.126.net/20161101214738/5d0b809a500d078046190fec7d3f72b6/ymusic/af72/d6ca/db27/bc9bec4a7e909411b1bcbb7eefaa1bb3.mp3",
                     "time":21
                 },
                 {
-                    "url": "http://192.168.0.215:8082/stream/6448300e-8249-49af-b948-1ecedeaeaa27.mp3",
+                    "url": "http://45.124.125.99/m10.music.126.net/20161101214738/5d0b809a500d078046190fec7d3f72b6/ymusic/af72/d6ca/db27/bc9bec4a7e909411b1bcbb7eefaa1bb3.mp3",
                     "time":21
-                },
-                {
-                    "url": "http://192.168.0.215:8082/stream/6448300e-8249-49af-b948-1ecedeaeaa27.mp3",
-                     "time":21
-                },
+                }
             ]
 
     }])
