@@ -1,9 +1,9 @@
 import uirouter from 'angular-ui-router';
 import routing from './page1.route';
 import voicePlayer from '../../components/voicePlayer/voicePlayer';
+import tabHeader from '../../components/tabHeader/tabHeader';
 
-
-export default angular.module('app.page1', [uirouter,voicePlayer])
+export default angular.module('app.page1', [uirouter,voicePlayer,tabHeader])
     .config(routing)
     .service('API', ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
         return {

@@ -12,13 +12,13 @@ content-item{
   display: block;
 }
 .nextPage.ng-hide-remove,.nextPage.ng-hide-add{
-  animation:0.5s;
+  animation:0.3s;
 }
 .nextPage.ng-hide-remove content-item,.nextPage.ng-hide-remove .tabheader{
-  animation: nextPage-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s forwards;
+  animation: nextPage-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
 .nextPage.ng-hide-add content-item,.nextPage.ng-hide-add .tabheader{
-  animation: nextPage-out cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s forwards;
+  animation: nextPage-out cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
 
 @keyframes nextPage-in
@@ -35,31 +35,27 @@ to {
 {
 from {
    transform:translateX(0);
-  opacity: 0.8
   }
 to {
  transform:translateX(-100%);
-  opacity: 0.5
   }
 }
 
 .prePage.ng-hide-remove {
-  animation: prePage-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  animation: prePage-in cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
 .prePage.ng-hide-add{
-  animation: prePage-out cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  animation: prePage-out cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
 
 @keyframes prePage-in
 {
 from {
    transform:translateX(-100%);
-  opacity: 0
   
   }
 to {
    transform:translateX(0);
- opacity: 0.8
   }
 }
 
